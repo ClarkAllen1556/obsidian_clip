@@ -5,7 +5,9 @@
   "version": "1.0.0",
   "manifest_version": 2,
   "permissions": [
-    "storage"
+    "storage",
+    "activeTab",
+    "tabs"
   ],
   "page_action": {
     "default_icon": {
@@ -16,10 +18,10 @@
     "show_matches": ["<all_urls>"]
   },
   "background": {
-    "page": "html/popup.html"
+    "scripts": ["src/scripts/background.js"]
   },
   "options_ui": {
-    "page": "./html/options.html",
+    "page": "src/html/options.html",
     "browser_style": true
   },
   "icons": {
