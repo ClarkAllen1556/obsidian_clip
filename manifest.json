@@ -1,0 +1,28 @@
+{
+  "name": "Obsidian Clipper",
+  "description": "Web clipper for Obsidian.",
+  "homepage_url": "https://urbanlife.me",
+  "version": "1.0.0",
+  "manifest_version": 2,
+  "permissions": [
+    "storage"
+  ],
+  "page_action": {
+    "default_icon": {
+      "32": "assets/ico.svg"
+    },
+    "default_title": "Clip page",
+    "browser_style": true,
+    "show_matches": ["<all_urls>"]
+  },
+  "background": {
+    "page": "html/popup.html"
+  },
+  "options_ui": {
+    "page": "./html/options.html",
+    "browser_style": true
+  },
+  "icons": {
+    "128": "assets/ico_128.png"
+  }
+}
