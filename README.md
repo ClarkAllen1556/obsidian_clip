@@ -2,6 +2,9 @@
 
 Web clipper extension for Firefox and Obsidian.
 
+Extension can be installed from the Firefox Add-ons store:
+- https://addons.mozilla.org/en-US/firefox/addon/reload-motive-haunt-turf5-excu/
+
 ## Requirements
 
 Requires the following two Obsidian plugins installed.
