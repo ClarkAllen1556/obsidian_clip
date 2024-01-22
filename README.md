@@ -16,6 +16,11 @@ Requires the following two Obsidian plugins installed.
 
 The Obsidian Vault name should be set in the Extension settings page.
 
+## Use
+ When you wish to clip something into Obsidian, click the extension's icon **in the address/URL bar** (see figure 1 below).
+ ![Screenshot 2023-09-03 120146](https://github.com/rushowr/obsidian_clip/assets/694870/d4d87b0c-c358-4550-884b-5f38078e7c55)
+
+
 ## Acknowledgements
 
 - [Iconoir](https://iconoir.com/)(Logo and Icon)
