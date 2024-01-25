@@ -27,5 +27,11 @@
   },
   "icons": {
     "128": "assets/ico_128.png"
+  },
+  "commands": {
+    "clipPage": {
+      "suggested_key": { "default": "Ctrl+Shift+U" },
+      "description": "Send clip to the Obsidian vault"
+    }
   }
 }

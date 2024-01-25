@@ -19,3 +19,8 @@ async function clipPage() {
     })
   }, console.error);
 }
+
+browser.commands.onCommand.addListener((command) => {
+  command === 'clipPage' ? clipPage() : null
+}
+);

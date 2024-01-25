@@ -1,14 +1,74 @@
-document.getElementById('clipper_options')
-  .addEventListener('submit', () => saveOptions());
+const config = {
+  "clipper_opts_shortcut": {
+    "defaultValue": "Ctrl+Shift+U",
+    "command": "clipPage"
+  },
+  "clipper_opts_vault_name": {
+    "defaultValue": undefined,
+    "command": undefined
+  }
+};
 
-browser.storage.local.get("clipper_opts_vault_name").then(resp => {
-  const { vaultName, clipper_opts_vault_name } = resp;
+const targetKeys = Object.keys(config);
 
-  document.getElementById('clipper_opts_vault_name').value = clipper_opts_vault_name;
-})
+const updateUI = async () => {
+  try {
+    const resp = await browser.storage.local.get(targetKeys);
 
-function saveOptions(){
-  const vaultName = document.getElementById('clipper_opts_vault_name').value;
+    targetKeys.forEach(key => {
+      const element = document.getElementById(key);
+      if (element) {
+        element.value = resp[key] ?? config[key].defaultValue;
+      }
+    });
+  } catch (error) {
+    console.error('Error retrieving values from storage:', error);
+  }
+};
 
-  browser.storage.local.set({ clipper_opts_vault_name: vaultName });
-}
+const saveOptions = async () => {
+  const optionsToSave = {};
+
+  for (const key of targetKeys) {
+    const element = document.getElementById(key);
+    optionsToSave[key] = element?.value || config[key].defaultValue;
+
+    if (config[key].command) {
+      await browser.commands.update({ name: config[key].command, shortcut: element?.value });
+    }
+  }
+
+  try {
+    await browser.storage.local.set(optionsToSave);
+    console.log('Options saved:', optionsToSave);
+  } catch (error) {
+    console.error('Error saving options:', error);
+  }
+};
+
+const restoreOptions = async () => {
+  try {
+    const resp = await browser.storage.local.get(targetKeys);
+    const optionsToSave = {};
+
+    targetKeys.forEach(key => {
+      const element = document.getElementById(key);
+      const value = resp[key] ?? config[key].defaultValue;
+      if (element) element.value = value;
+      if (!(key in resp)) optionsToSave[key] = value;
+    });
+
+    if (Object.keys(optionsToSave).length > 0) {
+      await browser.storage.local.set(optionsToSave);
+      console.log('Default options were saved:', optionsToSave);
+    }
+  } catch (error) {
+    console.error('Error restoring options:', error);
+  }
+};
+
+document.addEventListener('DOMContentLoaded', restoreOptions);
+document.getElementById('clipper_options').addEventListener('submit', event => {
+  event.preventDefault();
+  saveOptions();
+});
