@@ -2,7 +2,7 @@
   "name": "Obsidian Clipper",
   "description": "Web clipper for Obsidian.",
   "homepage_url": "https://github.com/ClarkAllen1556/obsidian_clip",
-  "version": "1.2.0",
+  "version": "2.0.0",
   "manifest_version": 2,
   "permissions": [
     "storage",

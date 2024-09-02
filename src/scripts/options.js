@@ -11,7 +11,7 @@ const config = {
 
 const targetKeys = Object.keys(config);
 
-const updateUI = async () => {
+async function updateUI() {
   try {
     const resp = await browser.storage.local.get(targetKeys);
 
@@ -24,9 +24,9 @@ const updateUI = async () => {
   } catch (error) {
     console.error('Error retrieving values from storage:', error);
   }
-};
+}
 
-const saveOptions = async () => {
+async function saveOptions() {
   const optionsToSave = {};
 
   for (const key of targetKeys) {
@@ -44,9 +44,9 @@ const saveOptions = async () => {
   } catch (error) {
     console.error('Error saving options:', error);
   }
-};
+}
 
-const restoreOptions = async () => {
+async function restoreOptions() {
   try {
     const resp = await browser.storage.local.get(targetKeys);
     const optionsToSave = {};
@@ -65,7 +65,7 @@ const restoreOptions = async () => {
   } catch (error) {
     console.error('Error restoring options:', error);
   }
-};
+}
 
 document.addEventListener('DOMContentLoaded', restoreOptions);
 document.getElementById('clipper_options').addEventListener('submit', event => {

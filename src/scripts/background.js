@@ -22,5 +22,4 @@ async function clipPage() {
 
 browser.commands.onCommand.addListener((command) => {
   command === 'clipPage' ? clipPage() : null
-}
-);
+});
