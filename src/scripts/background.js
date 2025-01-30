@@ -7,7 +7,7 @@ async function clipPage() {
     return;
   }
 
-  const obsidianURI = `obsidian://advanced-uri?vault=${vaultName}&commandname=ReadItLater%3A%20Save%20clipboard`
+  const obsidianURI = `obsidian://advanced-uri?vault=${vaultName}&commandname=ReadItLater%3A%20Create%20from%20clipboard`
 
   browser.tabs.query({currentWindow: true, active: true}).then((tabs) => {
     const { url } = tabs[0];
